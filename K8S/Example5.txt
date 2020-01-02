@@ -1,0 +1,23 @@
+kubectl create secret generic txtkeys --from-literal=username="root" --from-literal=password="admin"
+
+YAML FILE
+-------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secret-envars-test-pod
+spec:
+  containers:
+  - name: envars-test-container
+    image: nginx
+    env:
+    - name: SECRET_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: txtkeys
+          key: username
+    - name: SECRET_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: txtkeys
+          key: password
