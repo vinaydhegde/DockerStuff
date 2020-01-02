@@ -1,0 +1,12 @@
+web:
+  ports:
+    - "8883:80"
+  environment:
+    DEBUG: "true"
+
+db:
+  ports:
+    - "5432:5432"
+cache:
+  ports:
+    - "6379:6379"
